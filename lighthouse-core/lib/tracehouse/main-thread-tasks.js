@@ -603,13 +603,13 @@ class MainThreadTasks {
    * Prints an artistic rendering of the task tree for easier debugability.
    *
    * @param {TaskNode[]} tasks
-   * @param {{printWidth: number, startTime?: number, endTime?: number, taskLabelFn?: (node: TaskNode) => string}} options
+   * @param {{printWidth?: number, startTime?: number, endTime?: number, taskLabelFn?: (node: TaskNode) => string}} options
    * @return {string}
    */
-  static printTaskTreeToDebugString(tasks, options) {
+  static printTaskTreeToDebugString(tasks, options = {}) {
     const traceEndMs = Math.max(...tasks.map(t => t.endTime), 0);
     const {
-      printWidth,
+      printWidth = 100,
       startTime = 0,
       endTime = traceEndMs,
       taskLabelFn = node => node.event.name,
