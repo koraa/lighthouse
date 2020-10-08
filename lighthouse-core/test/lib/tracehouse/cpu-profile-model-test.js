@@ -66,7 +66,7 @@ describe('CPU Profiler Model', () => {
     });
 
     it('should create events while aware of other tasks', () => {
-      const ts = x => 9e6 + x;
+      const ts = x => profile.startTime + x;
 
       // With the sampling profiler we know that Baz and Foo ended *sometime between* 17e3 and 18e3.
       // We want to make sure when additional task information is present, we refine the end time.

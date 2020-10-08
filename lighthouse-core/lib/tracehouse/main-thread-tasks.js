@@ -638,6 +638,8 @@ class MainThreadTasks {
       tasksAtDepth.push(task);
       tasksByDepth.set(depth, tasksAtDepth);
 
+      // Create a user-friendly ID for new tasks using a capital letter.
+      // 65 is the ASCII code for 'A' and there are 26 letters in the english alphabet.
       const id = String.fromCharCode(65 + (taskLegend.size % 26));
       taskLegend.set(task, {id, task});
     }
