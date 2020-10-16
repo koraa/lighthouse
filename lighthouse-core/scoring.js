@@ -8,13 +8,6 @@
 
 const Audit = require('./audits/audit.js');
 
-/**
- * Clamp figure to 2 decimal places
- * @param {number} val
- * @return {number}
- */
-const clampTo2Decimals = val => Math.round(val * 100) / 100;
-
 class ReportScoring {
   /**
    * Computes the weighted-average of the score of the list of items.
@@ -40,7 +33,7 @@ class ReportScoring {
       {weight: 0, sum: 0}
     );
 
-    return clampTo2Decimals(results.sum / results.weight || 0);
+    return results.sum / results.weight || 0;
   }
 
   /**

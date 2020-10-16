@@ -11,13 +11,6 @@ const Util = require('../report/html/renderer/util.js');
 
 const DEFAULT_PASS = 'defaultPass';
 
-/**
- * Clamp figure to 2 decimal places
- * @param {number} val
- * @return {number}
- */
-const clampTo2Decimals = val => Math.round(val * 100) / 100;
-
 class Audit {
   /**
    * @return {string}
@@ -78,8 +71,7 @@ class Audit {
    * @return {number}
    */
   static computeLogNormalScore(controlPoints, value) {
-    const percentile = statistics.getLogNormalScore(controlPoints, value);
-    return clampTo2Decimals(percentile);
+    return statistics.getLogNormalScore(controlPoints, value);
   }
 
   /**
@@ -234,8 +226,6 @@ class Audit {
     }
     if (score > 1) throw new Error(`Audit score for ${auditId} is > 1`);
     if (score < 0) throw new Error(`Audit score for ${auditId} is < 0`);
-
-    score = clampTo2Decimals(score);
 
     return score;
   }
