@@ -132,7 +132,7 @@ class PerformanceCategoryRenderer extends CategoryRenderer {
       let v = audit.result.numericValue;
       return [
         acronymMapping[audit.id] || audit.id,
-        typeof v === 'number' ? v.toString() : 'null';
+        typeof v === 'number' ? v.toString() : 'null',
       ];
     });
     const paramPairs = [...metricPairs];
